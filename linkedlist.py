@@ -112,10 +112,12 @@ class SinglyLinkedList(object):
         return counter
 
     def extend(self, other):
-        # check if object is iterable
-        # if so: firstNode = other[0] self.append(firstNode);
-        # else TypeError: {} object is not iterable
-        return NotImplemented
+        # must be iterable
+        if isinstance(other, SinglyLinkedList):
+            return self.append(other.head)
+        sll = SinglyLinkedList()
+        for obj in other:
+            sll.insert(obj)
 
     def index(self, val):
         for i, node in enumerate(self.traverse()):
