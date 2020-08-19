@@ -126,8 +126,15 @@ class SinglyLinkedList(object):
         raise ValueError
 
     def pop(self, location):
-        # ~ del but return value
-        return NotImplemented
+        if self.size > location >= 0:
+            traversal = self.traverse()
+            for i in range(location):
+                located = next(traversal)
+            result = located.copy()
+            located.next_ = next(traversal).next_
+            return result
+        else:
+            raise IndexError
 
     def reverse(self):
         if self.size > 1:
