@@ -97,9 +97,8 @@ class SinglyLinkedList(object):
             raise ValueError
 
     def clear(self):
-        # for node in self.traverse():
-        #     self.remove(node)
-        return NotImplemented
+        self.head = None
+        self.size = 0
 
     def copy(self):
         return self.__copy__()
