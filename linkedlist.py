@@ -123,11 +123,12 @@ class SinglyLinkedList(object):
 
     def extend(self, other):
         # must be iterable
-        if isinstance(other, SinglyLinkedList):
-            return self.append(other.head)
-        sll = SinglyLinkedList()
-        for obj in other:
-            sll.insert(obj)
+        if not isinstance(other, SinglyLinkedList):
+            sll = SinglyLinkedList()
+            for obj in other:
+                sll.insert(obj)
+            other = sll
+        self.append(other.head)
 
     def index(self, val):
         for i, node in enumerate(self.traverse()):
