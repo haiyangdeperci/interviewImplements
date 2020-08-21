@@ -100,7 +100,6 @@ class SinglyLinkedList(object):
 
     def remove(self, val):
         for node in self.traverse():
-            print(node)
             if node.next_.val == val:
                 node.next_ = node.next_.next_
                 break
@@ -137,6 +136,7 @@ class SinglyLinkedList(object):
         raise ValueError
 
     def pop(self, location):
+        # rework
         if self.size > location >= 0:
             traversal = self.traverse()
             for i in range(location):
@@ -175,6 +175,7 @@ class SinglyLinkedList(object):
         return self.size
 
     def __getitem__(self, location):
+        # rework
         if self.size > location >= 0:
             traversal = self.traverse()
             for i in range(location + 1):
@@ -188,6 +189,7 @@ class SinglyLinkedList(object):
 
     def __delitem__(self, location):
         """Removes the nth item from the list"""
+        # rework
         if self.size > location >= 0:
             traversal = self.traverse()
             for i in range(location):
