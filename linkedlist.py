@@ -1,3 +1,11 @@
+"""
+Include LinkedList, LinkedListNode,
+SinglyLinkedList, SinglyLinkedListNode,
+DoublyLinkedList, DoublyLinkedListNode,
+CircularSinglyLinkedList, CircularSinglyLinkedListNode,
+CircularDoublyLinkedList, CircularDoublyLinkedListNode"""
+
+
 class SinglyLinkedListNode(object):
     """docstring for SinglyLinkedListNode"""
 
