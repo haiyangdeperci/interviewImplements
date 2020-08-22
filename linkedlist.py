@@ -137,16 +137,10 @@ class SinglyLinkedList(object):
         raise ValueError
 
     def pop(self, location):
-        # rework
-        if self.size > location >= 0:
-            traversal = self.traverse()
-            for i in range(location):
-                located = next(traversal)
-            result = located.copy()
-            located.next_ = next(traversal).next_
-            return result
-        else:
-            raise IndexError
+        located, next_ = self._locate_next(location)
+        result = located.copy()
+        located.next_ = next_.next_
+        return result
 
     def reverse(self):
         if self.size > 1:
@@ -176,31 +170,28 @@ class SinglyLinkedList(object):
         return self.size
 
     def __getitem__(self, location):
-        # rework
-        if self.size > location >= 0:
-            traversal = self.traverse()
-            for i in range(location + 1):
-                located = next(traversal)
-            return located
-        else:
-            raise IndexError
+        _, located = self._locate_next(location)
+        return located
 
     def __setitem__(self, location, val):
         self[location].val = val
 
     def __delitem__(self, location):
         """Removes the nth item from the list"""
-        # rework
-        if self.size > location >= 0:
-            traversal = self.traverse()
-            for i in range(location):
-                located = next(traversal)
-            located.next_ = next(traversal).next_
-        else:
-            raise IndexError
+        located, next_ = self._locate_next(location)
+        located.next_ = next_.next_
 
     def __copy__(self):
         """Shallow copy of SLL"""
         sll = SinglyLinkedList(self.head)
         sll.size = self.size
         return sll
+
+    def _locate_next(self, location):
+        if self.size > location >= 0:
+            traversal = self.traverse()
+            for i in range(location):
+                located = next(traversal)
+            return located, next(traversal)
+        else:
+            raise IndexError('list index out of range')
