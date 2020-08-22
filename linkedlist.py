@@ -65,7 +65,7 @@ class SinglyLinkedList(object):
 
     def _insert(self, node, location):
         if location < -1 or location > self.size:
-            raise IndexError
+            raise IndexError('list index out of range')
         if self.size:
             if location == -1:
                 located = self.last()
