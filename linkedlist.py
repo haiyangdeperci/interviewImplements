@@ -17,7 +17,7 @@ class SinglyLinkedListNode(object):
         return str(self.val)
 
     def __repr__(self):
-        return f'{self.__class__.__name__}({self.__str__()})'
+        return f'{self.__class__.__name__}({str(self)})'
 
     def __copy__(self):
         return SinglyLinkedListNode(self.val, self.next_)
@@ -170,7 +170,7 @@ class SinglyLinkedList(object):
         return ' -> '.join(map(str, self.traverse()))
 
     def __repr__(self):
-        return f'{self.__class__.__name__}({self.__str__()})'
+        return f'{self.__class__.__name__}({str(self)})'
 
     def __len__(self):
         return self.size
